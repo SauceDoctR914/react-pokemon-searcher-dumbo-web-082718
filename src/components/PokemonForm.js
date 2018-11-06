@@ -12,6 +12,21 @@ class PokemonForm extends React.Component {
       backUrl: ''
     }
   }
+handleFormChange = (event)=>{
+  this.setState({
+    [event.target.name]: event.target.value
+
+  })
+}
+
+
+  handleSubmit = (event) =>{
+    event.preventDefault()
+    this.props.makePoke(this.state, event)
+
+  }
+
+
 
   render() {
     return (
@@ -19,10 +34,10 @@ class PokemonForm extends React.Component {
         <h3>Add a Pokemon!</h3>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
-            <Form.Input fluid label="Name" placeholder="Name" name="name" />
-            <Form.Input fluid label="hp" placeholder="hp" name="hp" />
-            <Form.Input fluid label="Front Image URL" placeholder="url" name="frontUrl" />
-            <Form.Input fluid label="Back Image URL" placeholder="url" name="backUrl" />
+            <Form.Input onChange={this.handleFormChange} fluid label="Name" placeholder="Name" name="name" />
+            <Form.Input onChange={this.handleFormChange} fluid label="hp" placeholder="hp" name="hp" />
+            <Form.Input onChange={this.handleFormChange} fluid label="Front Image URL" placeholder="url" name="frontUrl" />
+            <Form.Input onChange={this.handleFormChange} fluid label="Back Image URL" placeholder="url" name="backUrl" />
           </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>
